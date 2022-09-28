@@ -1,100 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<link rel="stylesheet" href="mystyle.css">
-<title>Bewitching Brownies</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  /* Style inputs with type="text", select elements and textareas */
-input[type=text], select, textarea {
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */ 
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-}
+  <head>
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Bewitching Brownies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .intro {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+      }
+              
+      .intro > h2 {
+          text-align: center;
+      }
 
-/* Style the submit button with a specific background color etc */
-input[type=submit] {
-  background-color: rgb(101, 254, 241);
-  color: black;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; 
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
 
-/* When moving the mouse over the submit button, add a darker green color */
-input[type=submit]:hover {
-  background-color: rgb(67, 169, 160);
-}
+      input[type=submit] {
+        background-color: rgb(101, 254, 241);
+        color: black;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-/* Add a background color and some padding around the form */
-.contact {
-  border-radius: 5px;
-  background-color: #f6ecfd;
-  padding: 20px;
-  margin: 10px;
-}
+      input[type=submit]:hover {
+        background-color: rgb(67, 169, 160);
+      }
 
-.intro {
-  margin: 10px;
-}
+      .contact {
+        border-radius: 5px;
+        background-color: #f6ecfd;
+        padding: 20px;
+        margin: 10px;
+      }
 
-</style>
-</head>
+      .intro {
+        margin: 10px;
+      }
 
-<body>
-<div class="header">
-  <img src = "logo.png" alt="Betwitching Brownies" height = 150px/>
-</div>
-	
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="ourbrownies.html">Our Brownies</a>
-  <a href="contact.html">Contact Us</a>
-</div>
+    </style>
+  </head>
 
-<div class="intro">
-  <h3> Your form was submitted. We'll get back to you as soon as we can. Until then...</h3>
-  <p><b>Vist us: </b>187 Brownie Way, Somerville MA, 02144 </p>
-  <p> <b>Call us:</b> 973-828-3387</p>
-  <p><b>Email us: </b>bewitchingbrownies@gmail.com</p>
-  <p> OR fill out the form below...</p>
-</div>
+  <body>
+    <div class="header">
+      <img src = "logo.png" alt="Betwitching Brownies" height = 150px/>
+    </div>
+      
+    <div class="navbar">
+      <a href="index.html">Home</a>
+      <a href="ourbrownies.html">Our Brownies</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
 
-<div class="contact">
-  <form action="submit.html">
+    <div class="intro">
+      <h2> Your form was submitted. We'll get back to you as soon as we can. Until then...</h2>
+      <p><b>Vist us: </b>187 Brownie Way, Somerville MA, 02144 </p>
+      <p> <b>Call us:</b> 973-828-3387</p>
+      <p><b>Email us: </b>bewitchingbrownies@gmail.com</p>
+      <p> OR fill out the form below...</p>
+    </div>
 
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <div class="contact">
+      <form action="submit.html">
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="Your email..">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-    <label for="phone">Phone #</label>
-    <input type="text" id="phone" name="phone" placeholder="Your phone #..">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Your email..">
 
-    <label for="subject">Order Inquiry</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <label for="phone">Phone #</label>
+        <input type="text" id="phone" name="phone" placeholder="Your phone #..">
 
-    <input type="submit" value="Submit">
-    
-  </form>
-</div>
+        <label for="subject">Order Inquiry</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-<div class="footer">
-  <img src="BB.png" alt="Bewitching Brownies logo" width="150">  
-  <h2>@Betwitching Brownies | Powered by GitHub | Created by Melinda Fern</h2>
-  </div>
-  
-</body>
+        <input type="submit" value="Submit">
+        
+      </form>
+    </div>
+
+    <div class="footer">
+      <img src="BB.png" alt="Bewitching Brownies logo" width="150">  
+      <h2>@Betwitching Brownies | Powered by GitHub | Created by Melinda Fern</h2>
+    </div>
+      
+  </body>
 </html>
   

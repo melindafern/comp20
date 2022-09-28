@@ -6,36 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      .gallery {
-        border: 2px solid pink;
-        display: flex;
-        flex-direction: row;
-      }
-
-      .galleryItem {
-        margin: 5px;
-        border: 1px solid #ccc;
-        float: left;
-        width: 200px;
-        text-align: center;
-        border: 2px solid red;
-      }
-
-      .gallery img {
-        width: 100%;
-        height: 200px;
-        border: 2px solid blue;
-      }
-
-      .words {
-        margin: 5px;
-        padding: 0px;
-      }
-
-      .services {
-        margin: 10px;
-      }
-
       .founder {
         margin: 10px;
         text-align: center;
@@ -49,16 +19,55 @@
         margin-left: auto;
         margin-right: auto;
         border: 1px solid #666;
+        max-width: 400px;
+      }
+
+      .services {
+        border-radius: 5px;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 600px;
       }
-      @media screen and (max-width: 600px) {
-        
+
+      .services > h2 {
+        border-radius: 5px;
+        background-color: #f6ecfd;
+        padding: 10px;
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 300px;
+        text-align: center;
       }
       
-      /* .gallery {
-          flex-direction: column;
-          align-items: center;
-      } */
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+        .galleryItem {
+          margin: 5px;
+          border: 1px solid #ccc;
+          float: left;
+          width: 200px;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .gallery img {
+          width: 200px;
+          height: 200px;
+        }
+        
+        @media screen and (max-width: 400px) {
+          .gallery {
+              flex-direction: column;
+          }
+        }
 
     </style>
   </head>
@@ -87,7 +96,7 @@
     <div class ="services">
       <h3>Our services:</h3>
       Our fast growing business currently offers a selection of unique brownie flavors. We provide an in store service that allows the customer to choose their brownie piece (middle, side, and edge). We also take large orders of customizable brownies. Visit our contact us page to place an inquiry.
-      <h3>Our brownie selection:</h3>
+      </br> </br> <h2>Our Brownie Selection</h2>
     </div>
 
     <div class="gallery">
@@ -111,6 +120,8 @@
         <p>Chocolate Chunk Blondie</p>
       </div>
     </div>
+
+  </br> </br> </br>
 
     <div class="footer">
       <img src="BB.png" alt="Bewitching Brownies logo" width="150">  
