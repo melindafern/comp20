@@ -1,0 +1,41 @@
+html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Georgia, "sans-serif";
+    color:black;
+}
+
+.header {
+    padding: 5px; 
+    text-align: center; 
+    background: #f7b231;
+    color: white;
+}
+      
+    .header h1 {
+    font-size: 40px;
+    }
+
+.main {
+    text-align: center;
+}
+
+  .footer {
+    font-size: 10px;
+    padding: 20px;
+    text-align: center;
+    background: #Ececec;
+    display: flex;
+    margin-top: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

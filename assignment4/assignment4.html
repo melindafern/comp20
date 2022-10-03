@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="mystyle.css">
+        <title>Joe's Hotdogs</title>
+        <script>
+            function order() {
+                var subtotal;
+                var hotdog;
+                var fries;
+                var subtotal = 0;
+                var discount = 0;
+                var tax = 0;
+                var discountedsubtotal;
+                hotdog = prompt("How many hotdogs would you like?");
+                fries = prompt("How many fries would you like?");
+                sodas = prompt("How many sodas would you like?");
+                subtotal = (hotdog*4.25)+(fries*2.60)+(sodas*1.50);
+                //12.75+7.80+4.50= 25.05 // test with 3 for each
+                //figure out how to style the results so each is on a new line!
+                if (typeof subtotal === 'number' && !Number.isNaN(subtotal)) {
+                    if (subtotal >= 20) {
+                        discount = subtotal*.20
+                        discountedsubtotal = subtotal - discount;
+                        tax = subtotal*.0625;
+                        total = discountedsubtotal + tax;
+                        alert("Ordered items:\n"
+                                + hotdog + " hotdog(s)\n"
+                                + fries + " fries\n"
+                                + sodas + " soda(s)\n\n"
+                                + "Order receipt:"
+                                + "\nsubtotal = $" + subtotal.toFixed(2)
+                                + "\ndiscount (20% off) = $" + discount.toFixed(2)
+                                + "\ndiscounted subtotal = $" + discountedsubtotal.toFixed(2)
+                                + "\ntax = $" + tax.toFixed(2)
+                                + "\nfinal total = $" + total.toFixed(2));
+                    } else {
+                        tax = subtotal*.0625;
+                        total = subtotal + tax;
+                        alert("Ordered items:\n"
+                                + hotdog + " hotdog(s)\n"
+                                + fries + " fries\n"
+                                + sodas + " soda(s)\n\n"
+                                + "Order receipt:"
+                                + "\nsubtotal = $" + subtotal.toFixed(2)
+                                + "\nno discount applied"
+                                + "\ntax = $" + tax.toFixed(2)
+                                + "\nfinal total = $" + total.toFixed(2));
+                    }
+                }   else {
+                    alert("Please input only numbers when ordering!" )
+                }
+                   
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <img src = "logo.png" alt="Joe's Hotdogs" height = 200px/>
+          </div>
+      
+          <div class="main">
+            <h2>Home of the famous hotdog recipe</h2>
+            <button onclick="order()">Order now</buton>
+          </div>
+      
+          <div class="footer">
+            <img src="hotdog.png" alt="Joe's Hotdogs logo" width="150">  
+            <h2>@Joe's Hotdogs | Powered by GitHub | Created by Melinda Fern</h2>
+          </div>
+    </body>
+</html>
