@@ -39,3 +39,11 @@ body {
     justify-content: center;
     align-items: center;
   }
+
+button {
+    text-align: center;
+    justify-content: center;
+    padding: 30px;
+    margin: 40px auto;
+    font-size: 30px;
+}
