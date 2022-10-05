@@ -16,11 +16,8 @@
                 fries = prompt("How many fries would you like?");
                 sodas = prompt("How many sodas would you like?");
                 subtotal = (hotdog*4.25)+(fries*2.60)+(sodas*1.50);
-                //12.75+7.80+4.50= 25.05 // test with 3 for each
-                //figure out how to style the results so each is on a new line!
-                if (typeof subtotal === 'number' && !Number.isNaN(subtotal)) {
-                    if (subtotal >= 20) {
-                        discount = subtotal*.20
+                if (subtotal >= 20) {
+                        discount = subtotal*.20;
                         discountedsubtotal = subtotal - discount;
                         tax = subtotal*.0625;
                         total = discountedsubtotal + tax;
@@ -29,12 +26,12 @@
                                 + fries + " fries\n"
                                 + sodas + " soda(s)\n\n"
                                 + "Order receipt:"
-                                + "\nsubtotal = $" + subtotal.toFixed(2)
-                                + "\ndiscount (20% off) = $" + discount.toFixed(2)
-                                + "\ndiscounted subtotal = $" + discountedsubtotal.toFixed(2)
-                                + "\ntax = $" + tax.toFixed(2)
-                                + "\nfinal total = $" + total.toFixed(2));
-                    } else {
+                                + "\nsubtotal = $" + roundthis(subtotal)
+                                + "\ndiscount (20% off) = $" + roundthis(discount)
+                                + "\ndiscounted subtotal = $" + roundthis(discountedsubtotal)
+                                + "\ntax = $" + roundthis(tax)
+                                + "\nfinal total = $" + roundthis(total));
+                } else {
                         tax = subtotal*.0625;
                         total = subtotal + tax;
                         alert("Ordered items:\n"
@@ -42,31 +39,46 @@
                                 + fries + " fries\n"
                                 + sodas + " soda(s)\n\n"
                                 + "Order receipt:"
-                                + "\nsubtotal = $" + subtotal.toFixed(2)
+                                + "\nsubtotal = $" + roundthis(subtotal)
                                 + "\nno discount applied"
-                                + "\ntax = $" + tax.toFixed(2)
-                                + "\nfinal total = $" + total.toFixed(2));
-                    }
-                }   else {
-                    alert("Please input only numbers when ordering!" )
+                                + "\ntax = $" + roundthis(tax)
+                                + "\nfinal total = $" + roundthis(total));
                 }
-                   
             }
+            //created rounding function to try different methods without ToFixed!!
+            function roundthis(num) {
+                num = Math.round(num * 100)/100;
+                if (num % 1 === 0) {
+                    console.log('here');
+                    return num + ".00";
+                }
+                else if (num % 1 != 0) {
+                    var number = num.toString();
+                    var length = number.length;
+                    var index = number.indexOf(".");
+                    if ((length - index) === 2) {
+                        return num + "0";
+                    }
+                    else {
+                        return num;
+                    }
+                }
+            }    
         </script>
     </head>
     <body>
         <div class="header">
             <img src = "logo.png" alt="Joe's Hotdogs" height = 200px/>
-          </div>
+        </div>
       
-          <div class="main">
-            <h2>Home of the famous hotdog recipe</h2>
+        <div class="main">
+            <h1>Home of the famous hotdog recipe</h1>
             <button onclick="order()">Order now</buton>
-          </div>
+        </div>
       
-          <div class="footer">
+        <div class="footer">
             <img src="hotdog.png" alt="Joe's Hotdogs logo" width="150">  
             <h2>@Joe's Hotdogs | Powered by GitHub | Created by Melinda Fern</h2>
-          </div>
+        </div>
     </body>
 </html>
