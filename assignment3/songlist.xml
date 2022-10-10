@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="mystyle.css"?>
+<songlist>
+    <song>
+        <title>Skin</title>
+        <artist>Dijon</artist>
+        <genre>indie r&amp;b</genre>
+        <year>2018</year>
+    </song>
+    <song>
+        <title>Bound 2</title>
+        <artist>Kanye West</artist>
+        <genre>rap</genre>
+        <year>2013</year>
+    </song>
+    <song>
+        <title>hover like a GODDESS</title>
+        <artist>WILLOW</artist>
+        <genre>pop</genre>
+        <year>2022</year>
+    </song>
+    <song>
+        <title>Sober</title>
+        <artist>Childish Gambino</artist>
+        <genre>hip hop, pop, rap</genre>
+        <year>2014</year>
+    </song>
+    <song>
+        <title>I'LL TAKE YOU ON</title>
+        <artist>BROCKHAMPTON, Charlie Wilson</artist>
+        <genre>hip hop, rap, contemporary r&amp;b, neo soul</genre>
+        <year>2021</year>
+    </song>
+    <song>
+        <title>Love to Dream</title>
+        <artist>Doja Cat</artist>
+        <genre>pop</genre>
+        <year>2021</year>
+    </song>
+    <song>
+        <title>Brass Necklace</title>
+        <artist>FKJ, ((( O )))</artist>
+        <genre>indie soul, filter house, experimental hip hop</genre>
+        <year>2022</year>
+    </song>
+    <song>
+        <title>Only child</title>
+        <artist>Tierra Wack</artist>
+        <genre>alternative r&amp;b, indie soul, rap</genre>
+        <year>2019</year>
+    </song>
+    <song>
+        <title>Wasteland</title>
+        <artist>Tierra Wack</artist>
+        <genre>alternative r&amp;b, indie soul, rap</genre>
+        <year>2019</year>
+    </song>
+    <song>
+        <title>Rebound</title>
+        <artist>Tayla Parx, Joey Bada$$</artist>
+        <genre>hip hop, rap</genre>
+        <year>2019</year>
+    </song>
+    <song>
+        <title>ROCKSTAR P</title>
+        <artist>Baby Keem</artist>
+        <genre>hip hop, rap</genre>
+        <year>2019</year>
+    </song>
+    <song>
+        <title>Cigarette Daydreams</title>
+        <artist>Cage The Elephant</artist>
+        <genre>modern rock, punk blues, rock</genre>
+        <year>2013</year>
+    </song>
+</songlist>
