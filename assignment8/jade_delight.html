@@ -232,15 +232,15 @@ function td(content, className="") {
 		if (lname.value == "") {
 			alert("Please input a last name for your order");
 		}
-		else if (phone.value == "") {
-			alert("Pleaes input a phone number for your order.");
+		if (phone.value == "") {
+			alert("Please input a phone number for your order.");
 		}
 		//verify phone number has either (7 or 10 numbers)
-		else if ((phone.value.replace(/[^0-9]/g, "").length)!=10 && (phone.value.replace(/[^0-9]/g, "").length)!=7) {
+		if ((phone.value.replace(/[^0-9]/g, "").length)!=10 && (phone.value.replace(/[^0-9]/g, "").length)!=7) {
 			alert("Please input a valid phone number for your order.");
 		} 
 		//verify at least one item ordered
-		else if (itemQuant[0].value == 0 && itemQuant[1].value == 0 && itemQuant[2].value == 0 && itemQuant[3].value == 0 && itemQuant[4].value == 0) { 
+		if (itemQuant[0].value == 0 && itemQuant[1].value == 0 && itemQuant[2].value == 0 && itemQuant[3].value == 0 && itemQuant[4].value == 0) { 
 			alert("Please order at least one item from the menu.");
 		}
 		//no issues with order!
