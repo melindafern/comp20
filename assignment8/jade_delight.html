@@ -92,33 +92,44 @@ function td(content, className="") {
 
 <script> 
 	//MY JS CODE STARTS HERE!
-
-	//create a function to total each item when the user inputs quantity
-	//get user inputs per item + store
-	//get item + cost --> store
-	//calculate total for each item (itemquant*cost)
-	//update document with item totals
 	
+	//form element variables
 	const form = document.getElementsByTagName("form")[0];
 	var formInput = document.querySelector("form")[0];
+	//submit button element variable 
 	var submitButton = document.querySelector("input[type=button]");
 	
+	//form elements variables (for calculations)
 	const itemTotalCost = form.elements["cost"];
 	const subtotal = form.elements["subtotal"];
 	const taxTotal = form.elements["tax"];
 	const total = form.elements["total"];
+
+	//form elements variables (for user input)
 	const address = document.getElementsByClassName("userInfo address");
 	const street = document.getElementsByName("street")[0];
 	const city = document.getElementsByName("city")[0];
 	const lname = document.getElementsByName("lname")[0];
-	const orderType = document.getElementsByName("p_or_d")[0];
 	const phone = document.getElementsByName("phone")[0];
 
+	//delivery or pickup element variable
+	const orderType = document.getElementsByName("p_or_d")[0];
+
+	//item costs + name array variables
 	const itemCosts = [5.5, 7.25, 6.8, 9.5, 3.25];
 	const itemName = ["Chicken Chop Suey", "Sweet and Sour Pork", "Shrimp Lo Mein", "Moo Shi Chicken", "Fried Rice"];
 	
+	//item quantities by user input array variable
 	const itemQuant = [form["quan0"], form["quan1"], form["quan2"], form["quan3"], form["quan4"]];
 
+	// Function: updateTotal()
+	// Purpose: This function updates the item totals, subtotals, tax, and total when the user inputs information.
+	// Description: This function creates variables to save the total information as well as a counter variable i.
+	//				it uses a for loop to iterate through the item quanities to update the item total cost box while
+	//				adding to the subtotal. This function also calculates the subtotal, tax, and total.
+	//				Before printing the new totals, the function uses toFixed() to round to 2 decimal places.
+	// Input: N/a
+	// Output: N/a
 	function updateTotal() {
 		var totalCost = 0;
 		var subtotaling = 0;
@@ -143,7 +154,13 @@ function td(content, className="") {
  
 	//hides street + city fields unless the user selects delivery
 	$(address).hide();
-	//need to call this function on load so this is automatically gone!!
+
+	// Function: delivery()
+	// Purpose: This function shows the address input fields when the user clicks the delivery option.
+	// Description: This function uses a if else statement which checks if the pickup field is checked.
+	//				If it is not checked, it hides the address fields. If it is checked it shows the fields.
+	// Input: N/a
+	// Output: N/a
 	function delivery() {
 		if(!orderType.checked) {
 			$(address).show();
@@ -153,6 +170,15 @@ function td(content, className="") {
 		}
 	}
 
+	// Function: getFoodTime()
+	// Purpose: This function calculates the time that the food will be ready for the customer.
+	// Description: This function first gets the time using the Date class and then saves that
+	//				information to variables. Then it checks if the order is delivery or pickup.
+	//				Depending on that information it will either add 20 or 40 minutes to the
+	//				minutes, checking to see if the time will be in a new hour. 
+	// Input: N/a
+	// Output: The function returns the dateTime variable which is a string that includes the
+	//			pickup or delivery time.
 	function getFoodTime() {
 		var now = new Date();
 		var date = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
@@ -162,12 +188,7 @@ function td(content, className="") {
 		if (!orderType.checked) {
 			if ((minutes + 40) >= 60) {
 				minutes = (minutes + 40) - 60;
-				if (hours == 12) {
-					hours = 1;
-				}
-				else {
-					hours = hours + 1;
-				}
+				hours = hours + 1;
 			}
 			else {
 				minutes = minutes + 40;
@@ -177,12 +198,7 @@ function td(content, className="") {
 		else {
 			if ((minutes + 20) >= 60) {
 				minutes = (minutes + 20) - 60;
-				if (hours == 12) { 
-					hours = 1;
-				}
-				else {
-					hours = hours + 1;
-				}
+				hours = hours + 1;
 			}
 			else {
 				minutes = minutes + 20;
@@ -190,11 +206,21 @@ function td(content, className="") {
 		}	
 		var time = hours + ":" + minutes;
 		var dateTime = date +' '+time;
-		console.log(dateTime);
 		return dateTime;
 	}
 
-	function validateForm() {
+
+	// Function: validateForm()
+	// Purpose: This function validates that the form includes all necessary order information.
+	// Description: The function first checks in the order is delivery in that case it will make sure 
+	//				The user has input a delivery address. Then the function checks if the user has 
+	//				put in a last name as well as a valid phone number. Last, it checks if the user has
+	//				ordered at least one item from the menu. Finally, if the form checks all validations
+	//				the function will send an alert to the user that their order was submitted and the
+	//				function will call the orderDetails() function.
+	// Input: N/a
+	// Output: N/a
+	function submitted() {
 		//delivery order
 		if(!orderType.checked) {
 			//if delivery validate street + city
@@ -224,19 +250,24 @@ function td(content, className="") {
 		}
 	}
 	 
+
+	// Function: orderDetails()
+	// Purpose: This function shows all the order details in a new window.
+	// Description: This function creates a new window variable which prints the quantity, item and cost
+	//				for each ordered item. It also prints the subtotal, tax and total. Finally, the function
+	//				checks whether the order is delivery or pickup and calls the getFoodTime() function
+	//				to print the time when the food will be ready or delivered. 
+	// Input: N/a
+	// Output: N/a
 	function orderDetails() {
 		var newWindow = window.open();
 		var totalCost = 0;
-		var subtotaling = 0;
-		var taxing = 0;
-		var totaling = 0;
 		//items/quantity/cost for each subtotals/tax/total
 		newWindow.document.write("Ordered Items:<br>");
 		for(i=0;i<5;i++) {
 			if (itemQuant[i].value != 0) {
 				newWindow.document.write(itemQuant[i].value + " " + itemName[i] + ": ");
 				totalCost = (itemQuant[i].value)*(itemCosts[i]);
-				subtotaling = subtotaling + totalCost; 
 				newWindow.document.write("$" + totalCost.toFixed(2) + "<br>");
 			}
 			else {
@@ -260,19 +291,20 @@ function td(content, className="") {
 		}
 	}
 
-	//updates form with each change by calling functions
+
+	// Function: updateForm()
+	// Purpose: This function calls the functions that will update the form when the user inputs information.
+	// Description: This function calls the updateTotal() and delivery() functions.
+	// Input: N/a
+	// Output: N/a
 	 function updateForm() {
 		updateTotal();
 		delivery();
 	 }
-
-	 function submitted() {
-		getFoodTime();
-		validateForm();
-	 }
 	 
-	 //event listener for updating form when there is a change
+	//event listener for updating form when there is a change
 	 form.addEventListener('change', updateForm);
+	//event listener for when the user submits the form
 	 submitButton.addEventListener('click', submitted);
 	
 </script>
