@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="mystyle.css">
+  <title>pr1cafe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href=css/stylesheet.css>
+</head>
+<style>
+.intro {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+      }
+        
+        .intro > h2 {
+          text-align: center;
+        }
+
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; 
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+      input[type=submit] {
+        background-color: rgb(101, 254, 241);
+        color: black;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background-color: rgb(67, 169, 160);
+      }
+
+      .contact {
+        border-radius: 5px;
+        background-color: #47bac2;
+        padding: 20px;
+        margin: 10px;
+      }
+
+      .intro {
+        margin: 10px;
+       }
+</style>
+
+<body>
+
+<div class="navbar">
+  <a class="logo" href=./index.html>FlapJax</a>
+  <a href=./order.html>Order</a>
+  <a class="active" href=./contact.html>Contact</a>
+  <a href=./hours.html>Hours</a>
+  <a href=./menu.html>Menu</a>
+  <a href=./reservation.html>Reservation</a>
+  <a href=./aboutus.html>About Us</a>
+</div>
+
+<div class="intro">
+  <h2> Hi! FlapJax Diner would love to hear from you.</h2>
+  <p><b>Vist us: </b>187 FlapJax Way, Somerville MA, 02144 </p>
+  <p> <b>Call us:</b> 973-828-3387</p>
+  <p><b>Email us: </b>flapjaxdiner@gmail.com</p>
+  <p> OR fill out the form below...</p>
+</div>
+
+<div class="contact">
+  <form action="submit.html">
+
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Your email..">
+
+    <label for="phone">Phone #</label>
+    <input type="text" id="phone" name="phone" placeholder="Your phone #..">
+
+    <label for="subject">Order Inquiry</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+    
+  </form>
+</div>
+
+<div class="footer">
+  <img src=images/cake.png alt="FlapJax Diner Logo" width="150">  
+  <h2>@FlapJax Diner | Powered by GitHub | Created by Melinda Fern, Josh Balbi, Hailey Roover, and Jack Flores</h2>
+</div>
+
+</body>
+</html>

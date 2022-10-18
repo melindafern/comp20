@@ -1,0 +1,12 @@
+.userInfo {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.userInfo > label {
+    flex: 1;
+  }
+
+.userInfo > input {
+    flex: 2;
+  }
