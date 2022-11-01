@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<title>Contrary AJAX</title>
+	<meta charset="utf-8"/>
+	<script>
+		function loadData() {
+			
+			request = new XMLHttpRequest();
+			document.getElementById("cData").innerHTML += "<br>Step 1";
+ 
+			request.open("GET", "http://www.secretcheese.com/comp20/demo/contrary.php?w=black", true);
+
+			document.getElementById("cData").innerHTML += "<br>Step 2";
+
+			request.onreadystatechange = function() {
+				document.getElementById("cData").innerHTML += "<br>current ready state: " + request.readyState;
+  
+				if (request.readyState == 4 && 
+					request.status == 200) 
+				{
+					// bingo!  time to use the data
+					document.getElementById("cData").innerHTML += "<br>Data is ready!";
+
+					theData = request.responseText;
+					document.getElementById("cData").innerHTML += "<br>The response is: " + theData;
+					
+				}
+				else if (request.readyState == 4 && request.status != 200) 
+				{
+				   document.getElementById("cData").innerHTML += "<br>Request failed!";
+				}
+
+			}
+			document.getElementById("cData").innerHTML += 
+					"<br>Sending request";
+			request.send();
+			
+		}  // end load data
+	</script>
+</head>
+
+
+<body>
+
+	<h1>Contrary</h1>
+	<div id="cData">Loading...</div>
+	<script language="javascript">
+		loadData();
+	</script>
+</body>
+</html>

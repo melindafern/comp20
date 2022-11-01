@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<title>Contrary AJAX</title>
+	<meta charset="utf-8"/>
+	<script>
+		function loadData() {
+			
+			request = new XMLHttpRequest();
+
+ 			theWord = document.forms[0].word.value;
+			request.open("GET", "http://www.secretcheese.com/comp20/demo/contrary.php?w="+theWord, true);
+
+			request.onreadystatechange = function() {
+ 
+				if (request.readyState == 4 && 
+					request.status == 200) 
+				{
+					theData = request.responseText;
+					document.getElementById("cData").innerHTML = "<br>The response is: " + theData;	
+				}
+				else if (request.readyState == 4 && request.status != 200) 
+				{
+				   document.getElementById("cData").innerHTML += "<br>Request failed!";
+				}
+			}
+			request.send();
+		}  // end load data
+	</script>
+</head>
+<body>
+
+	<h1>Contrary</h1>
+	<form>Pick a word: <input type = 'text' name = 'word'>
+		<br><input type = "button" value = "Get Response"
+			onclick="loadData()">
+	</form>
+	<div id="cData">&nbsp;</div>
+</body>
+</html>
