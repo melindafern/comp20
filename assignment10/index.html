@@ -4,6 +4,15 @@
 	<title>API Fun!</title>
 	
 	<script>
+		// Function: getAPI()
+		// Purpose: This function uses get and XMLHttpRequest() to request the API, open it, and print the data on the page.
+		// Description: This function creates a request variable that declares a new XMLHttpsRequest. It performs this request when
+		// 				the page is loaded. If the page is at a ready state the function will request the data from the API and print it
+		//				to the request div. If it not ready then there will be a status error. Finally, if the ready state was ignored
+		//				this error will be printed as well. The function uses the open function to get the public API I choose and the
+		//				send function to print it to the page.
+		// Input: N/a
+		// Output: N/a
 		function getAPI(){
 			var ajaxRequest = new XMLHttpRequest();
 			ajaxRequest.onreadystatechange = function(){
@@ -27,25 +36,25 @@
 			ajaxRequest.send();
 	    }
 
-        function useFetch() {
-            const fetchPromise =
-                    fetch('https://random-words-api.vercel.app/word');
-
-            fetchPromise.then(convertToText);
-            }
-            
-            function convertToText(response) {
-            
-            let textPromise = response.text();
-
-            textPromise.then(addTextToPage);
-            }
-            
-            function addTextToPage(text){
-            document
-                .getElementById('withFetch')
-                .innerText = text;      
-        }
+		// Function: useFetch()
+		// Purpose: This function uses the new fetch to request the API, open it, and print the data on the page.
+		// Description: I created a variable for the url that has the public API I am using. It uses the fetch function to get the url
+		// 				and then process the response to print it to the withFetch div in json text format.
+		// 
+		// Input: N/a
+		// Output: N/a
+		function useFetch() {
+			let url = 'https://random-words-api.vercel.app/word';
+			fetch(url)
+			.then(function(response) {
+				return response.text();
+			})
+			.then(function(text) {
+				document
+				.getElementById('withFetch')
+				.innerText = text;
+			});
+    	}
 	
 	</script>	
 </head>
