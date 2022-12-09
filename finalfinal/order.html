@@ -1,0 +1,831 @@
+<html>
+<head>
+  <title>Order</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href=css/stylesheet.css>
+  <script>
+      var dropdownShown = false;
+      function showDropdown() {
+            let dropButton = document.getElementsByClassName("dropdownElems")[0];
+            if (!dropdownShown) {
+                dropButton.style.display = "block";
+                dropdownShown = true;
+            } else {
+                dropButton.style.display = "none";
+                dropdownShown = false;
+            }
+      }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+</head>
+<style>
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=button] {
+  background-color: #b5dac9(101, 254, 241);
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: rgb(67, 169, 160);
+}
+
+.order {
+  border-radius: 5px;
+  background-color: #de5430;
+  padding: 20px;
+  margin: 10px;
+}
+
+@media screen and (min-width: 915px) {
+     .order {
+         margin-right: 400px;
+     }
+ }
+
+/* make navbar and footer more responsive */
+ @media screen and (max-width: 915px) {
+     .order {
+        margin-right: 20px;
+     }
+ }
+
+</style>
+
+<body>
+
+<script>
+function MenuItem(name, cost)
+{
+	this.name = name;
+	this.cost = cost;
+}
+
+menuItems = new Array(
+	new MenuItem("Apple pie", 14),
+	new MenuItem("Triple Berry", 14),
+	new MenuItem("Smores", 14),
+	new MenuItem("Savory", 16),
+	new MenuItem("Vegan Banana Chocolate Chip", 15),
+    new MenuItem("Lemon Ricotta", 15),
+);
+
+function makenum(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' >";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option>" + j + "</option>";
+	t+= "</select>";
+	return t;
+}
+
+function makefood(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' >";
+	for (j=minRange; j<maxRange; j++)
+	   t += "<option>" + menuItems[j].name + "</option>";
+	t+= "</select>";
+	return t;
+}
+
+function td(content, className="")
+{
+	return "<td class = '" + className + "'>" + content + "</td>";
+}
+
+</script>
+
+<div class="navbar">
+  <a class="logo" href="./index.html" ><img src="images/trivia.png" alt="Flapjax" height="66px"></a>
+  <a class="page active" href=./order.html>Order</a>
+  <a class="page" href=./contact.html>Contact</a>
+  <a class="page" href=./hours.html>Hours</a>
+  <a class="page" href=./menu.html>Menu</a>
+  <a class="page" href=./reservation.html>Reservation</a>
+  <a class="page" href=./aboutus.html>About Us</a>
+  <div class="dropdown">
+      <button class="hamburger" onclick="showDropdown()">&#9776;</button>
+      <div class="dropdownElems">
+          <a href="./order.html">Order</a>
+          <a href=./contact.html>Contact</a>
+          <a href=./hours.html>Hours</a>
+          <a href=./menu.html>Menu</a>
+          <a href=./reservation.html>Reservation</a>
+          <a href=./aboutus.html>About Us</a>
+      </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+<h1> Order Here </h1>
+<h2> Please fill out the form correctly </h2>
+<p>Once your order has been processed, we will call you to confirm the order, cost, and payment method.</p>
+
+<form onchange = "update()" target = _blank method = "get" action = "http://localhost:8080/process">
+<div class="order">
+<p class="userInfo"><label>First Name:</label> <input type="text"  name='fname'placeholder="First Name..." /></p>
+<p class="userInfo"><label>Last Name:</label>  <input type="text"  name='lname'placeholder="Last Name..." /></p>
+<p class="userInfo"><label>Phone #:</label>  <input type="text"  name='phone' placeholder="Phone #..."/></p>
+<p class="userInfo"><label>Table #:</label>  <input type="text"  name='num' placeholder="Table #..."/></p>
+
+<label>Order:</label> (<a href = ./menu.html target = blank>click here </a> to see the menu)
+
+
+<table border="0" cellpadding="3">
+  <tr>
+    <th>Select Item</th>
+    <th>Item Name</th>
+    <th>Cost Each</th>
+    <th>Total Cost</th>
+  </tr>
+<script>
+var s = "";
+console.log(menuItems.length)
+for (i=0; i< menuItems.length; i++)
+{
+    s += "<tr class= 'food'>";
+    s += td(makefood("qual" + i, 0, 6),"foodtype");
+    s += td(makenum("quan" + i, 0, 10),"selectQuantity");
+    s += td("<input type='text' name='indcost' placeholder='$...'/>", "cost");
+    s += td("<input type='text' name='cost' placeholder='$...'/>", "totalCost");
+    s += "</tr>";
+
+}
+
+
+document.writeln(s);
+document.getElementsByClassName('food')[0].style.display="";
+document.getElementsByClassName('food')[1].style.display="none";
+document.getElementsByClassName('food')[2].style.display="none";
+document.getElementsByClassName("food")[3].style.display="none";
+document.getElementsByClassName("food")[4].style.display="none";
+document.getElementsByClassName("food")[5].style.display="none";
+
+</script>
+</table>
+
+<p><input type = "button" value = "Add Another Selection" onclick = "showone()"/>
+<input type = "button" value = "Delete a selection" onclick = "deleteone()"/></p>
+
+<p class="userInfo"><label>Allergies:</label>  <input type="text"  name='allergies' placeholder="Allergies..."/></p>
+
+<p class="subtotal totalSection"><label>Subtotal</label>:
+   $ <input type="text"  name='subtotal' id="subtotal" placeholder="Subtotal..."/>
+</p>
+<p class="tax totalSection"><label>Mass tax 6.25%:</label>
+  $ <input type="text"  name='tax' id="tax" placeholder="Tax..."/>
+</p>
+<p class="total totalSection"><label>Total:</label> $ <input type="text"  name='total' placeholder="Total..." id="total" />
+</p>
+
+<p class="verify"><input type = "button" value = "verify" onclick = "checkout()"/></p>
+<p class="verify"><input type = "submit" value = "Submit"/></p>
+</div>
+</form>
+
+<script>
+
+error = '';
+displayed = 1;
+
+
+document.getElementsByClassName("totalSection")[0].style.display="none";
+document.getElementsByClassName("totalSection")[1].style.display="none";
+document.getElementsByClassName("totalSection")[2].style.display="none";
+document.getElementsByClassName("verify")[1].style.display="none";
+
+
+function checkout(){
+    bool = validate();
+    if(!bool){
+        alert(error);
+    }
+    else{
+        out();
+    }
+}
+
+function validate(){
+    if (document.getElementsByName('fname')[0].value == ""){
+        error = "Input first name"
+        return false;
+    }
+    if (document.getElementsByName('lname')[0].value == ""){
+        error = "Input last name"
+        return false;
+    }
+    if (document.getElementsByName('phone')[0].value == ""){
+        error = "input phone number"
+        return false;
+    }
+    if(document.getElementsByName('phone')[0].value.length != 10) {
+        error = 'invalid phone number, Make sure it is 10 digits'
+        return false;
+    }
+    if(document.getElementsByName('num')[0].value == ""){
+        error = "input Table number"
+        return false;
+    }
+    error = "Congratulations on your Order!"
+    return true;
+}
+
+function out(){
+    document.getElementsByClassName("verify")[0].style.display="none";
+    document.getElementsByClassName("verify")[1].style.display="";
+}
+
+
+
+//------------------------------------------------------------------------------
+function showone(){
+    food = document.getElementsByClassName('food');
+    for (i = 1; i < menuItems.length; i++) {
+        if (food[i].style.display== "none"){
+            food[i].style.display = "";
+            displayed = displayed + 1;
+            break;
+        }
+    }
+    updatedelete();
+}
+
+
+
+
+function deleteone(){
+    food = document.getElementsByClassName('food');
+    for (i = menuItems.length-1; i > 0; i--) {
+        if (food[i].style.display== ""){
+            food[i].style.display = "none";
+            displayed = displayed - 1;
+            break;
+        }
+    }
+    document.getElementsByName("quan" + (displayed))[0].value = 0;
+    update();
+    updateregain();
+}
+
+
+
+ind= [0,0,0,0,0,0,0]
+function updatedelete(){
+
+    // good
+    food = document.getElementsByName("qual" + (displayed-2))[0];
+    ind[displayed-2] = food.selectedIndex;
+    count = 0;
+    for(i = 0; i < menuItems.length; i++){
+        if(ind[displayed-2] == i){
+            count = 1;
+        }
+        else{
+            food.remove((0 + count));
+        }
+    }
+
+    // removes all of a food from hidden and un hidden lists
+    for (var i = displayed-1; i < menuItems.length; i++) {
+        x = document.getElementsByName("qual"+i)[0];
+        x.remove(ind[displayed-2]);
+    }
+}
+
+
+function updateregain(){
+    index = ind[displayed-1]
+    console.log(index)
+    for(i = displayed; i < menuItems.length; i++){
+        food = document.getElementsByName("qual" + i)[0]
+        var opt = document.createElement('option');
+        opt.text = menuItems[index].name;
+        food.add(opt,food.options[index]);
+    }
+
+
+    food = document.getElementsByName("qual" + (displayed-1))[0]
+    for(i = 0; i < menuItems.length; i++){
+        var opt = document.createElement('option');
+        opt.text = menuItems[i].name;
+        if(i < index){
+            food.add(opt,food.options[i]);
+        }
+        else if(i > index){
+            food.add(opt);
+        }
+    }
+}
+
+
+
+
+//------------------------------------------------------------------------------
+
+counter = [0,0,0,0,0,0,0]
+cost = 0;
+subtotal = 0;
+tax = 0;
+total = 0;
+
+
+
+function update(){
+    for (var i = 0; i < menuItems.length; i++) {
+        n = parseInt(document.getElementsByName("quan" + i)[0].value);
+        if (counter[i] != n){
+            counter[i] = change(i,n,counter);
+        }
+    }
+}
+
+
+
+
+
+function change(i,n,counter){
+        x = document.getElementsByName("qual" + i)[0]
+        val = x.value
+        console.log(val)
+        for(j=0; j < menuItems.length; j++){
+            if(val == menuItems[j].name){
+                console.log(j)
+                index = j
+            }
+        }
+    	cost = menuItems[index].cost * (n - counter[i]);
+    	subtotal = subtotal + cost;
+    	tax = subtotal * .0625;
+    	total = subtotal + tax;
+        document.getElementsByName("indcost")[i].value = (menuItems[index].cost).toFixed(2)
+        document.getElementsByName("cost")[i].value = (menuItems[index].cost * n).toFixed(2)
+    	document.getElementsByName("subtotal")[0].value = subtotal.toFixed(2);
+    	document.getElementsByName("tax")[0].value = tax.toFixed(2);
+    	document.getElementsByName("total")[0].value = total.toFixed(2);
+    	return n;
+}
+
+</script>
+
+<div class="footer">
+  <img src=images/pancake.png alt="FlapJax Diner Logo" width="100">
+  <h2>@FlapJax Diner | Powered by GitHub </br> Created by Melinda Fern, Josh Balbi, Hailey Roover, and Jack Flores</h2>
+</div>
+</body>
+
+
+<!-- <html>
+<head>
+  <title>Order</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href=css/stylesheet.css>
+  <script>
+      var dropdownShown = false;
+      function showDropdown() {
+            let dropButton = document.getElementsByClassName("dropdownElems")[0];
+            if (!dropdownShown) {
+                dropButton.style.display = "block";
+                dropdownShown = true;
+            } else {
+                dropButton.style.display = "none";
+                dropdownShown = false;
+            }
+      }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+</head>
+<style>
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=button] {
+  background-color: #b5dac9;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: #667b71;
+}
+
+.order {
+  border-radius: 5px;
+  background-color: #de5430;
+  padding: 20px;
+  margin: 10px;
+}
+
+@media screen and (min-width: 915px) {
+     .order {
+         margin-right: 400px;
+     }
+ }
+
+/* make navbar and footer more responsive */
+ @media screen and (max-width: 915px) {
+     .order {
+        margin-right: 20px;
+     }
+ }
+
+</style>
+
+<body>
+
+<script>
+function MenuItem(name, cost)
+{
+	this.name = name;
+	this.cost = cost;
+}
+
+menuItems = new Array(
+	new MenuItem("Apple pie", 14),
+	new MenuItem("Triple Berry", 14),
+	new MenuItem("S’mores", 14),
+	new MenuItem("Savory", 16),
+	new MenuItem("Vegan Banana Chocolate Chip", 13),
+    new MenuItem("Lemon Ricotta ", 15),
+);
+
+function makenum(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' >";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option>" + j + "</option>";
+	t+= "</select>";
+	return t;
+}
+
+function makefood(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' >";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option>" + menuItems[j].name + "</option>";
+	t+= "</select>";
+	return t;
+}
+
+function td(content, className="")
+{
+	return "<td class = '" + className + "'>" + content + "</td>";
+}
+
+</script>
+
+<div class="navbar">
+  <a class="logo" href="./index.html" ><img src="images/trivia.png" alt="Flapjax" height="66px"></a>
+  <a class="page active" href=./order.html>Order</a>
+  <a class="page" href=./contact.html>Contact</a>
+  <a class="page" href=./menu.html>Menu</a>
+  <a class="page" href=./reservation.html>Reservation</a>
+  <a class="page" href=./aboutus.html>About Us</a>
+  <div class="dropdown">
+      <button class="hamburger" onclick="showDropdown()">&#9776;</button>
+      <div class="dropdownElems">
+          <a href="./order.html">Order</a>
+          <a href=./contact.html>Contact</a>
+          <a href=./menu.html>Menu</a>
+          <a href=./reservation.html>Reservation</a>
+          <a href=./aboutus.html>About Us</a>
+      </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+<h1> Order Here </h1>
+<h2> Please fill out the form correctly </h2>
+<p>Once your order has been processed, we will call you to confirm the order, cost, and payment method.</p>
+
+<form onchange = "update()">
+<div class="order">
+<p class="userInfo"><label>First Name:</label> <input type="text"  name='fname'placeholder="First Name..." /></p>
+<p class="userInfo"><label>Last Name:</label>  <input type="text"  name='lname'placeholder="Last Name..." /></p>
+<p class="userInfo"><label>Phone #:</label>  <input type="text"  name='phone' placeholder="Phone #..."/></p>
+<label>Address:</label>
+<p class="userInfo addy"> <textarea type="text"  name='addy' rows="2" cols="20" placeholder="Address..."></textarea></p>
+<p>	<input type="radio"  name="p_or_d" value = "pickup" checked="checked"/>Pickup
+	<input type="radio"  name='p_or_d' value = 'delivery'/>
+	Delivery
+</p>
+<label>Order:</label> (<a href = ./menu.html target = blank>click here </a> to see the menu)
+
+
+<table border="0" cellpadding="3">
+  <tr>
+    <th>Select Item</th>
+    <th>Item Name</th>
+    <th>Cost Each</th>
+    <th>Total Cost</th>
+  </tr>
+<script>
+var s = "";
+for (i=0; i< menuItems.length; i++)
+{
+    s += "<tr class= 'food'>";
+    s += td(makenum("quan" + i, 0, 10),"selectQuantity");
+    s += td(makefood("qual" + i, 0, 6),"foodtype");
+    s += td("<input type='text' name='indcost' placeholder='$...'/>", "cost");
+    s += td("<input type='text' name='cost' placeholder='$...'/>", "totalCost");
+    s += "</tr>";
+
+}
+document.writeln(s);
+document.getElementsByClassName('food')[0].style.display="";
+document.getElementsByClassName('food')[1].style.display="none";
+document.getElementsByClassName('food')[2].style.display="none";
+document.getElementsByClassName("food")[3].style.display="none";
+document.getElementsByClassName("food")[4].style.display="none";
+document.getElementsByClassName("food")[5].style.display="none";
+document.getElementsByClassName("food")[6].style.display="none";
+
+</script>
+</table>
+
+<p><input type = "button" value = "Add Another Selection" onclick = "showone()"/>
+<input type = "button" value = "Delete a selection" onclick = "deleteone()"/></p>
+
+<p class="subtotal totalSection"><label>Subtotal</label>:
+   $ <input type="text"  name='subtotal' id="subtotal" placeholder="Subtotal..."/>
+</p>
+<p class="tax totalSection"><label>Mass tax 6.25%:</label>
+  $ <input type="text"  name='tax' id="tax" placeholder="Tax..."/>
+</p>
+<p class="total totalSection"><label>Total:</label> $ <input type="text"  name='total' placeholder="Total..." id="total" />
+</p>
+
+<p class="userInfo"><label>Allergies:</label>  <input type="text"  name='allergies' placeholder="Allergies..."/></p>
+
+<input type = "button" value = "Submit" onclick = "checkout()"/>
+</div>
+</form>
+<script>
+
+error = '';
+displayed = 1;
+
+
+function checkout(){
+    bool = validate();
+    if(!bool){
+        alert(error);
+    }
+    else{
+        out(error);
+    }
+}
+
+function validate(){
+    if (document.getElementsByName('fname')[0].value == ""){
+        error = "Input first name"
+        return false;
+    }
+    if (document.getElementsByName('lname')[0].value == ""){
+        error = "Input last name"
+        return false;
+    }
+    if (document.getElementsByName('phone')[0].value == ""){
+        error = "input phone number"
+        return false;
+    }
+    if(document.getElementsByName('phone')[0].value.length != 10) {
+        error = 'invalid phone number, Make sure it is 10 digits'
+        return false;
+    }
+    if(!document.getElementsByName('p_or_d')[0].checked){
+        if (document.getElementsByName('addy')[0].value == ""){
+            error = "input Address"
+            return false;
+        }
+    }
+    error = "Congratulations on your Order!"
+    return true;
+}
+
+function out(error){
+    if(document.getElementsByName('p_or_d')[0].checked){
+        d = new Date();
+        t = new Date(d.getTime() + 30*60000);
+        var hour = t.getHours()
+        if (hour < 11){
+            ampm = "AM"
+        }
+        else{
+            ampm = "PM"
+        }
+        var minute = t.getMinutes();
+        s = "Do you wish to proceed with the information below\n" +
+            "Name: " + document.getElementsByName('fname')[0].value + " " + document.getElementsByName('lname')[0].value + "\n" +
+            "Phone#: " + document.getElementsByName('phone')[0].value + "\n" +
+            "Pickup Time: " + (hour%13+1) + ":" + minute + " " + ampm + "\n";
+            if (document.getElementsByName('allergies')[0].value == ''){
+                s += "Allergies: none"
+            }
+            else{
+                s += "Allergies: " + document.getElementsByName('allergies')[0].value;
+            }
+    }
+    else{
+        s = "Do you wish to proceed with the information below\n" +
+            "Name: " + document.getElementsByName('fname')[0].value + " " + document.getElementsByName('lname')[0].value + "\n" +
+            "Phone#: " + document.getElementsByName('phone')[0].value + "\n" +
+            "Address: " + document.getElementsByName('addy')[0].value + "\n";
+            "Subtotal: " + document.getElementsByName('subtotal')[0].value + "\n";
+            "Tax: " + document.getElementsByName('tax')[0].value + "\n";
+            "Total: " + document.getElementsByName('total')[0].value + "\n";
+            if (document.getElementsByName('allergies')[0].value == '')
+                s += "Allergies: none"
+            else{
+                s += "Allergies: " + document.getElementsByName('allergies')[0].value;
+            }
+    }
+    confirmation = window.confirm(s)
+    if(confirmation){
+        window.alert(error)
+    }
+    else{
+        window.alert("Your Order has not been placed.")
+    }
+}
+
+
+
+//------------------------------------------------------------------------------
+function showone(){
+    food = document.getElementsByClassName('food');
+    for (i = 1; i < menuItems.length; i++) {
+        if (food[i].style.display== "none"){
+            food[i].style.display = "";
+            displayed = displayed + 1;
+            break;
+        }
+    }
+    updatedelete();
+}
+
+
+
+
+function deleteone(){
+    food = document.getElementsByClassName('food');
+    for (i = menuItems.length-1; i > 0; i--) {
+        if (food[i].style.display== ""){
+            food[i].style.display = "none";
+            displayed = displayed - 1;
+            break;
+        }
+    }
+    document.getElementsByName("quan" + (displayed))[0].value = 0;
+    update();
+    updateregain();
+}
+
+
+
+ind= [0,0,0,0,0,0,0]
+function updatedelete(){
+
+    // good
+    food = document.getElementsByName("qual" + (displayed-2))[0];
+    ind[displayed-2] = food.selectedIndex;
+    count = 0;
+    for(i = 0; i < menuItems.length; i++){
+        if(ind[displayed-2] == i){
+            count = 1;
+        }
+        else{
+            food.remove((0 + count));
+        }
+    }
+
+    // removes all of a food from hidden and un hidden lists
+    for (var i = displayed-1; i < menuItems.length; i++) {
+        x = document.getElementsByName("qual"+i)[0];
+        x.remove(ind[displayed-2]);
+    }
+}
+
+
+function updateregain(){
+    index = ind[displayed-1]
+    console.log(index)
+    for(i = displayed; i < menuItems.length; i++){
+        food = document.getElementsByName("qual" + i)[0]
+        var opt = document.createElement('option');
+        opt.text = menuItems[index].name;
+        food.add(opt,food.options[index]);
+    }
+
+
+    food = document.getElementsByName("qual" + (displayed-1))[0]
+    for(i = 0; i < menuItems.length; i++){
+        var opt = document.createElement('option');
+        opt.text = menuItems[i].name;
+        if(i < index){
+            food.add(opt,food.options[i]);
+        }
+        else if(i > index){
+            food.add(opt);
+        }
+    }
+}
+
+
+
+
+//------------------------------------------------------------------------------
+
+counter = [0,0,0,0,0,0,0]
+cost = 0;
+subtotal = 0;
+tax = 0;
+total = 0;
+
+
+
+function update(){
+    for (var i = 0; i < menuItems.length; i++) {
+        n = parseInt(document.getElementsByName("quan" + i)[0].value);
+        if (counter[i] != n){
+            counter[i] = change(i,n,counter);
+        }
+    }
+}
+
+
+
+
+
+function change(i,n,counter){
+        x = document.getElementsByName("qual" + i)[0]
+        val = x.value
+        console.log(val)
+        for(j=0; j < menuItems.length; j++){
+            if(val == menuItems[j].name){
+                console.log(j)
+                index = j
+            }
+        }
+    	cost = menuItems[index].cost * (n - counter[i]);
+    	subtotal = subtotal + cost;
+    	tax = subtotal * .0625;
+    	total = subtotal + tax;
+        document.getElementsByName("indcost")[i].value = (menuItems[index].cost).toFixed(2)
+        document.getElementsByName("cost")[i].value = (menuItems[index].cost * n).toFixed(2)
+    	document.getElementsByName("subtotal")[0].value = subtotal.toFixed(2);
+    	document.getElementsByName("tax")[0].value = tax.toFixed(2);
+    	document.getElementsByName("total")[0].value = total.toFixed(2);
+    	return n;
+}
+
+</script>
+
+<div class="footer">
+  <img src=images/pancake.png alt="FlapJax Diner Logo" width="100">
+  <h2>@FlapJax Diner | Powered by GitHub </br> Created by Melinda Fern, Josh Balbi, Hailey Roover, and Jack Flores</h2>
+</div>
+</body> -->

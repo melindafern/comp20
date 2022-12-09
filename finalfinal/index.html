@@ -1,0 +1,399 @@
+<html>
+<head>
+  <title>Flapjax</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href=css/stylesheet.css>
+  <meta charset="UTF-8">
+  <meta name="description" content="Cambridge Diner">
+  <meta name="keywords" content="FlapJax, Diner, Pancakes">
+  <meta name="author" content="Jack Flores, Joshua Balbi, Melinda Fern, Hailey Roover">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <script>
+
+
+    var dropdownShown = false;
+    function showDropdown() {
+          let dropButton = document.getElementsByClassName("dropdownElems")[0];
+          if (!dropdownShown) {
+              dropButton.style.display = "block";
+              dropdownShown = true;
+          } else {
+              dropButton.style.display = "none";
+              dropdownShown = false;
+          }
+    }
+
+    function sayThankYou() {
+      let message = document.getElementsByClassName("thank")[0];
+      message.style.display = "block";
+    }
+
+</script>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+<style>
+
+.contact {
+  text-align: center;
+}
+
+.thank {
+  display: none;
+}
+
+.main {
+   display: flex;
+    margin-top: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.trivia {
+  display: flex;
+    margin-top: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.submitbutton {
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #b5dac9;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  border-color: black;
+}
+
+.submitbutton:hover {
+  background-color: #6e857a;
+}
+
+button[type=button] {
+  font-size: 40px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #b5dac9;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  border-color: black;
+}
+
+button[type=button]:hover {
+  background-color: #6e857a;
+}
+
+.gallery {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+        .galleryItem {
+          margin: 5px;
+          border: 1px solid #ccc;
+          float: left;
+          width: 300px;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .gallery img {
+          width: 300px;
+          height: 300px;
+        }
+        
+        @media screen and (max-width: 400px) {
+          .gallery {
+              flex-direction: column;
+          }
+        }
+
+      .contact {
+        border-radius: 5px;
+        background-color: #de5430;
+        /* padding: 10px; */
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        left: 0;
+        right: 0; 
+      }
+      
+
+      @media screen and (min-width: 1415px) {
+        .contact {
+         margin-right: 500px;
+         margin-left: 500px;
+        }
+        }
+
+        /* //make navbar and footer more responsive */
+        @media screen and (max-width: 1415px) {
+            .contact {
+              margin-right: 300px;
+              margin-left: 300px;
+            }
+        }
+        
+        @media screen and (max-width: 915px) {
+            .contact {
+              margin-right: 20vw;
+              margin-left: 20vw;
+            }
+        }
+
+    .textbox {
+      padding:10px;
+      margin: 5px;
+    }
+
+</style>
+
+<body>
+
+<div class="navbar">
+  <a class="logo" href="./index.html" ><img src="images/trivia.png" alt="Flapjax" height="66px"></a>
+  <a class="page" href=./order.html>Order</a>
+  <a class="page" href=./contact.html>Contact</a>
+  <a class="page" href=./menu.html>Menu</a>
+  <a class="page" href=./reservation.html>Reservation</a>
+  <a class="page" href=./aboutus.html>About Us</a>
+  <div class="dropdown">
+      <button class="hamburger" onclick="showDropdown()">&#9776;</button>
+      <div class="dropdownElems">
+          <a href="./order.html">Order</a>
+          <a href=./contact.html>Contact</a>
+          <a href=./menu.html>Menu</a>
+          <a href=./reservation.html>Reservation</a>
+          <a href=./aboutus.html>About Us</a>
+      </div>
+  </div>
+</div>
+<br/><br/><br/><br/>
+
+
+<div class="main">
+        <div class = "logoImage">
+          <img src="images/trivia.png" alt="Flapjax Diner Logo" height="300px">
+        </div>
+        <h2>A trivia twist on a classic American staple.</h2>
+
+        <p>Welcome to Flapjax Diner! Come and dine with us to enjoy our award-winning flapjacks
+            and trivia fun for the whole family! See you soon!</p>
+</div>
+
+<script>
+const options = {
+	method: 'GET',
+	headers: {
+		accept: 'application/json',
+	}
+};
+
+function displayed(){
+        document.getElementById('qbutton').innerHTML = ""
+        fetch("https://opentdb.com/api.php?amount=20", options).then(
+        res => {
+            res.json().then(
+            res => {
+                        i = Math.floor(Math.random() * 20);
+                        console.log(res.results[i].correct_answer)
+                        t = "Category: " + res.results[i].category + "</br>";
+                        t += "Difficulty: "+ res.results[i].difficulty + "</br>";
+                        t += res.results[i].question;
+                        document.getElementById('answer').innerHTML = ""
+                        document.getElementById('choice').innerHTML = t;
+                        displaychoices(res.results[i].type,res.results[i].correct_answer,res.results[i].incorrect_answers)
+                        document.getElementById('ansbutton').innerHTML = "<form onclick='answer()''></br><button type='button'>answer!</button></form>"
+                }
+                )
+        }
+        )
+        timer();
+}
+
+function displaychoices(qtype, correct, incorrect){
+    if (qtype == "boolean") {
+        boolean(correct, incorrect)
+    }
+    else{
+        multi(correct, incorrect)
+    }
+}
+
+function boolean(correct, incorrect){
+    i = Math.floor(Math.random() * 2);
+    if (i == 0){
+        t = "<input type='radio'  name='ans' value = 'right' />" +correct+"</br>"
+        t += "<input type='radio'  name='ans' value = 'wrong'/>"+incorrect
+    }
+    else{
+        t = "<input type='radio'  name='ans' value = 'wrong' />" +incorrect+"</br>"
+        t += "<input type='radio'  name='ans' value = 'right'/>"+correct
+    }
+    document.getElementById('answerchoices').innerHTML = t;
+}
+
+function multi(correct, incorrect){
+    i = Math.floor(Math.random() * 4);
+    arr = [0,1,2]
+    t = ""
+    l = 0;
+    for (var j = 0; j < 4; j++) {
+        if (i == j){
+            t += "<input type='radio'  name='ans' value = 'right'/>" + correct+"</br>"
+            l = l+1;
+        }
+        else{
+            t +="<input type='radio'  name='ans' value = 'wrong'/>" + incorrect[arr[j-l]]+"</br>"
+        }
+    }
+    document.getElementById('answerchoices').innerHTML = t;
+}
+
+function answer(){
+    k = 5;
+    for (var i = 0; i < document.getElementsByName('ans').length; i++) {
+        if (document.getElementsByName('ans')[i].checked == true){
+            k = i;
+        }
+    }
+    if (k == 5){
+        document.getElementById('answer').innerHTML = "<p>Sorry, You did not select an answer in time."
+    }
+    else if (document.getElementsByName('ans')[k].value == "right"){
+        document.getElementById('answer').innerHTML = "Congratulations, that is correct";
+        discount()
+    }
+    else{
+        document.getElementById('answer').innerHTML = "<p>Sorry, that is incorrect. " +
+        "Come back tomorrow for another chance at 25% off your next meal!</p";
+    }
+}
+
+function timer(){
+    document.getElementById('time').innerHTML = "<p>You have <span max = '15' id = 'showtime'></span> Seconds left!</p>";
+    remainingTimeElement = document.getElementById('showtime'),
+    secondsLeft = 15.75
+    const downloadTimer = setInterval(
+        () => {
+            if (secondsLeft <= 0) {
+                answer()
+                document.getElementById('choice').innerHTML = "";
+                document.getElementById('time').innerHTML = ""
+                document.getElementById('ansbutton').innerHTML = "";
+                document.getElementById('answerchoices').innerHTML = "";
+                clearInterval(downloadTimer)
+            }
+            if (document.getElementById('answer').innerHTML != ""){
+                clearInterval(downloadTimer)
+                document.getElementById('choice').innerHTML = "";
+                document.getElementById('answerchoices').innerHTML = "";
+                document.getElementById('time').innerHTML = ""
+                document.getElementById('ansbutton').innerHTML = ""
+            }
+            remainingTimeElement.innerHTML = Math.floor(secondsLeft)
+            secondsLeft -= .25;
+        },250)
+}
+
+function discount(){
+    num = Math.floor(Math.random() * 1000000); //target=_blank
+    document.getElementById('choice').innerHTML = "";
+    document.getElementById('answerchoices').innerHTML = "";
+    document.getElementById('discount').innerHTML = "Enter Information for Discount code</p>" +
+    "<form name = 'form1' target = _blank method = 'get' action = 'http://localhost:8080'>"+
+    "<p class='userInfo'><label>First Name:</label> <input type='text'  name='fname' /></p>" +
+    "<p class='userInfo'><label>Last Name:</label> <input type='text'  name='lname' /></p> " +
+    "<p class='userInfo'><label>Discount:</label> <input type='text' name='discount' /></p>" +
+    "<input type = 'submit'/></form>";
+    document.getElementsByName("discount")[0].value = num;
+    document.getElementsByClassName("userInfo")[2].style.display = 'none';
+}
+
+function clear(){
+    document.getElementById('answer').innerHTML = ""
+    document.getElementById('discount').innerHTML = "";
+    document.getElementById('desc').innerHTML = "Come back next week for a new Trivia question!";
+}
+
+</script>
+
+<div class ="trivia">
+  <div id = "desc">
+  </div>
+  <div id="qbutton">
+  <form onclick="displayed()">
+    <button type="button">Get 25% off!</button>
+  </form>
+  </div>
+  <div id = "choice">
+  </div>
+  <div id= "time">
+  </div>
+  <div id = "answerchoices">
+  </div>
+  <div id = "ansbutton">
+  </div>
+  <div id = "answer">
+  </div>
+  <div id = "discount">
+  </div>
+</div>
+
+<div class="gallery">
+    <div class="galleryItem">
+      <img src="images/pancakes.jpg" alt="flapjax pancakes">
+    </div>
+
+    <div class="galleryItem">
+        <img src="images/inside.jpg" alt="inside the diner">
+    </div>
+
+    <div class="galleryItem">
+        <img src="images/breakfast.jpg" alt="more breakfast options">
+    </div>
+
+  </div>
+</br>
+
+<div class="contact">
+  <h2>Have a good trivia question?</h2>
+  Suggest it below! We're always looking for more! <br/><br/>
+  <form onsubmit="sayThankYou()">
+      <label for="question">Question:</label><br>
+      <input class ="textbox" type="text" name="question" required><br>
+      <label for="answer">Answer:</label><br>
+      <input class ="textbox" type="text" name="answer" required><br><br>
+      <input class ="submitbutton" type="submit" value="Submit Suggestion"/>
+  </form>
+</div>
+
+<div class="thank">
+  <p>Thank you for your suggestion!</p>
+</div>
+
+<div class="footer">
+  <img src=images/pancake.png alt="FlapJax Diner Logo" width="100">
+  <h2>@FlapJax Diner | Powered by GitHub </br> Created by Melinda Fern, Josh Balbi, Hailey Roover, and Jack Flores</h2>
+</div>
+
+</body>
+</html>

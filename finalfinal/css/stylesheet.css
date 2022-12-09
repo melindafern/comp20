@@ -1,0 +1,242 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ffffff;
+}
+
+h1{
+  font-weight: 600;
+  color: #000000;
+  font-size: 48;
+  font-family: 'Peralta', cursive;
+}
+
+h2{
+  font-weight: 400;
+  color: #000000;
+  font-size: 24;
+  font-family: 'Peralta', cursive;
+}
+
+h3{
+  /* font-weight: 200; */
+  color: #000000;
+  /* font-size: 18; */
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* make navbar more responsive */
+@media screen and (min-width: 915px) {
+   .navbar a.page {
+       display: inline-block;
+       line-height: 70px;
+       font-size: 25px;
+   }
+
+   .dropdown {
+       display: none;
+   }
+}
+
+/* make navbar/dropdown menu responsive */
+@media screen and (max-width: 915px) {
+   .navbar a.page {
+       display: none;
+   }
+
+   .dropdown {
+       display: block;
+   }
+
+   .navbar a:hover {
+       background-color: gray;
+       color: rgb(255, 255, 255);
+   }
+}
+
+
+/* navbar class */
+.navbar {
+   height: 70px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   background: #b5dac9;
+}
+
+/* navbar element style */
+.navbar a.page {
+  float: right;
+  background-color: #b5dac9;
+  padding: 0 18px;
+  text-decoration: none;
+  color: black;
+}
+
+/* logo */
+.navbar a.logo {
+  display: inline-block;
+  float: left;
+  padding: 0 18px;
+}
+
+.navbar a.logo:hover {background-color: #b5dac9}
+
+.hamburger {
+   line-height: 65px;
+   background-position: black;
+   font-size: 40px;
+   color: grey;
+   text-decoration: none;
+   padding: 0 38px;
+}
+
+.dropdown {
+ float:right;
+}
+
+.dropdownElems {
+ display: none;
+ position: absolute;
+ background-color: #f1f1f1;
+ min-width: 200px;
+ box-shadow: 0px 4px 16px 0px;
+}
+
+.dropdownElems a {
+ color: black;
+ padding: 12px 16px;
+ text-decoration: none;
+ display: block;
+}
+
+.dropdownElems a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdownElems {display: block;}
+
+
+.dropdown:hover .hamburger {
+   background-color: gray;
+   color: white;
+}
+
+/* active navbar page */
+.navbar a.active {
+  text-decoration: none;
+  color: #de5430;
+}
+
+/* hovering over a navbar element */
+.navbar a:hover {
+  background-color: #de5430;
+  color: black;
+
+}
+
+.column {
+float: left;
+}
+.bigger{
+float: left;
+width: 50%;
+}
+
+.smaller{
+float: left;
+width: 25%;
+}
+
+.inbig{
+float: right;
+width: 60%;
+}
+
+.insmall{
+float: left;
+width: 35%;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.footer {
+  font-size: 10px;
+  padding: 10px;
+  text-align: center;
+  background: #b5dac9;
+  display: flex;
+  margin-top: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: em;
+}
+
+.menu {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+}
+
+.menu-group-heading {
+  margin: 0;
+  padding-bottom: 1em;
+  border-bottom: 2px solid #ccc;
+  
+}
+
+.menu-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3em;
+  padding: 1.5em 0;
+}
+
+.menu-item {
+  display: flex;
+  
+}
+
+
+
+.menu-item-text {
+  flex-grow: 1;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.menu-item-heading {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.menu-item-name {
+  margin-right: 1.5em;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.menu-item-description {
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 992px) {
+  .menu {
+    font-size: 16px;
+  }
+
+  .menu-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+

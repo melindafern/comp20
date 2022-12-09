@@ -1,0 +1,323 @@
+<html>
+<head>
+  <title>Menu</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href=css/stylesheet.css>
+  <script>
+      var dropdownShown = false;
+      function showDropdown() {
+            let dropButton = document.getElementsByClassName("dropdownElems")[0];
+            if (!dropdownShown) {
+                dropButton.style.display = "block";
+                dropdownShown = true;
+            } else {
+                dropButton.style.display = "none";
+                dropdownShown = false;
+            }
+      }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+</head>
+<style>
+
+/* make navbar and footer more responsive */
+ @media screen and (max-width: 715px) {
+     .menu-group {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+     }
+ }
+
+ .special {
+    text-align: center;
+ }
+</style>
+
+<body>
+
+
+
+<div class="navbar">
+  <a class="logo" href="./index.html" ><img src="images/trivia.png" alt="Flapjax" height="66px"></a>
+  <a class="page" href=./order.html>Order</a>
+  <a class="page" href=./contact.html>Contact</a>
+  <a class="page active" href=./menu.html>Menu</a>
+  <a class="page" href=./reservation.html>Reservation</a>
+  <a class="page" href=./aboutus.html>About Us</a>
+  <div class="dropdown">
+      <button class="hamburger" onclick="showDropdown()">&#9776;</button>
+      <div class="dropdownElems">
+          <a href="./order.html">Order</a>
+          <a href=./contact.html>Contact</a>
+          <a href=./menu.html>Menu</a>
+          <a href=./reservation.html>Reservation</a>
+          <a href=./aboutus.html>About Us</a>
+      </div>
+  </div>
+</div>
+<br/>
+<br/>
+
+<center><h1>FlapJax Menu</h1></center>
+<div class="special"><h3>FlapJax Trivia Special: Spend $30 or more and get one free pass on a question of your choice!</h3></div>
+
+<div class="container">
+    <div class="menu">
+      <h2 class="menu-group-heading">
+        Specialty Flapjax:
+      </h2>
+      <div class="menu-group">
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Apple Pie </span>
+              <span class="menu-item-price">$14</span>
+            </h3>
+            <p class="menu-item-description">
+                Three fluffy pancakes with baked apples and cinnamon,
+                topped with whipped cream and a graham cracker crumble
+            </p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Triple Berry </span>
+              <span class="menu-item-price">$14</span>
+            </h3>
+            <p class="menu-item-description">
+                Three blueberry pancakes topped with warm 
+                raspberry sauce and sprinkles with chopped strawberries
+            </p>
+          </div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">S'mores </span>
+                <span class="menu-item-price">$14</span>
+              </h3>
+              <p class="menu-item-description">
+                Three chocolate chip pancakes with marshmallow sauce and grahmcracker crumbles
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Savory </span>
+                <span class="menu-item-price">$16</span>
+              </h3>
+              <p class="menu-item-description">
+                Three potato pancakes (shredded potato, onion, binded with egg) 
+                topped with a fried egg, bacon, and melted cheddar cheese
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Vegan Banana Chocolate Chip</span>
+                <span class="menu-item-price">$15</span>
+              </h3>
+              <p class="menu-item-description">
+                Three vegan banana batter pancakes filled with non-dairy chocolate chips. 
+                Made with oat milk and non-dairy butter
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Lemon Ricotta</span>
+                <span class="menu-item-price">$15</span>
+              </h3>
+              <p class="menu-item-description">
+                Three lemony pancakes topped with sugar and whipped ricotta cheese
+              </p>
+            </div>
+          </div>
+      </div>
+      <h2 class="menu-group-heading">
+        Build Your Own Breakfast Plate:
+      </h2>
+      <div class="menu-group">
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Classic Flapjax</span>
+              <span class="menu-item-price">$4 / $7</span>
+            </h3>
+            <p class="menu-item-description">
+              One pancake ($4)<br>
+              Two pancakers ($7)
+            </p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Blueberry Flapjax</span>
+              <span class="menu-item-price">$4 / $7</span>
+            </h3>
+            <p class="menu-item-description">
+                One pancake ($4)<br>
+                Two pancakers ($7)
+            </p>
+          </div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Banana Flapjax</span>
+                <span class="menu-item-price">$5 / $9</span>
+              </h3>
+              <p class="menu-item-description">
+                One pancake ($5)<br>
+                Two pancakers ($9)
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Egg</span>
+                <span class="menu-item-price">$2</span>
+              </h3>
+              <p class="menu-item-description">
+                Prepared to your choice
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Toast</span>
+                <span class="menu-item-price">$3</span>
+              </h3>
+              <p class="menu-item-description">
+                rye, wheat, or sourdough
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Fruit bowl</span>
+                <span class="menu-item-price">$5</span>
+              </h3>
+              <p class="menu-item-description">
+                Berries, bananas, and apples
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Hashbrowns</span>
+                <span class="menu-item-price">$4</span>
+              </h3>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Bacon</span>
+                <span class="menu-item-price">$3</span>
+              </h3>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Breakfast Sausage</span>
+                <span class="menu-item-price">$4</span>
+              </h3>
+            </div>
+          </div>
+      </div>
+    </div>
+    <h2 class="menu-group-heading">
+        Beverages
+      </h2>
+      <div class="menu-group">
+        <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Milk</span>
+                <span class="menu-item-price">$2 / $3</span>
+              </h3>
+              <p class="menu-item-description">
+                Regular Milk ($2) <br>
+                Strawberry, Chocolate, Almond ($3)
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Juice</span>
+                <span class="menu-item-price">$3 / $4</span>
+              </h3>
+              <p class="menu-item-description">
+                Apple, Orange ($3) <br>
+                Cranberry ($4)
+              </p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Smoothies</span>
+                <span class="menu-item-price">$7 / $8 / $9</span>
+              </h3>
+              <p class="menu-item-description">
+                Mango, Banana ($7) <br>
+                Strawberry ($8)<br>
+                Strawberry Banana ($9)
+              </p>
+            </div>
+          </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Coffee</span>
+              <span class="menu-item-price">$2</span>
+            </h3>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">
+            <h3 class="menu-item-heading">
+              <span class="menu-item-name">Tea</span>
+              <span class="menu-item-price">$2</span>
+            </h3>
+          </div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-text">
+              <h3 class="menu-item-heading">
+                <span class="menu-item-name">Water</span>
+                <span class="menu-item-price">$0.00</span>
+              </h3>
+            </div>
+          </div>
+      </div>
+  </div>
+  
+
+<div class="footer">
+  <img src=images/pancake.png alt="FlapJax Diner Logo" width="100">
+  <h2>@FlapJax Diner | Powered by GitHub </br> Created by Melinda Fern, Josh Balbi, Hailey Roover, and Jack Flores</h2>
+</div>
+
+
+
+</body>
+</html>

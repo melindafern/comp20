@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>About Us</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href=css/stylesheet.css>
+  <script>
+      var dropdownShown = false;
+      function showDropdown() {
+            let dropButton = document.getElementsByClassName("dropdownElems")[0];
+            if (!dropdownShown) {
+                dropButton.style.display = "block";
+                dropdownShown = true;
+            } else {
+                dropButton.style.display = "none";
+                dropdownShown = false;
+            }
+      }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+
+<style>
+  .about-section{
+    text-align: left;
+    padding-left: 100px;
+    padding-right: 200px;
+    line-height: 200%;
+  }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a class="logo" href="./index.html" ><img src="images/trivia.png" alt="Flapjax" height="66px"></a>
+  <a class="page" href=./order.html>Order</a>
+  <a class="page" href=./contact.html>Contact</a>
+  <a class="page" href=./hours.html>Hours</a>
+  <a class="page" href=./menu.html>Menu</a>
+  <a class="page" href=./reservation.html>Reservation</a>
+  <a class="page active" href=./aboutus.html>About Us</a>
+  <div class="dropdown">
+      <button class="hamburger" onclick="showDropdown()">&#9776;</button>
+      <div class="dropdownElems">
+          <a href="./order.html">Order</a>
+          <a href=./contact.html>Contact</a>
+          <a href=./hours.html>Hours</a>
+          <a href=./menu.html>Menu</a>
+          <a href=./reservation.html>Reservation</a>
+          <a href=./aboutus.html>About Us</a>
+      </div>
+  </div>
+</div>
+
+
+<br/>
+<br/>
+
+
+<h1> About Us </h1>
+
+<div class="about-section">
+  <h2><u>History</u></h2>
+  <p>Inspired by the fond memories of Sunday morning pancakes & trivia with his family, Jax Flores opened 
+    Flapjax Diner in 1999 in Cambridge, Massachusetts to spread joy to his community. For Jax, opening a diner was about more 
+    than just starting a business– it was about gathering his community together and creating lasting memories. Now, as 
+    a restaurant owner of over two decades and an experienced trivia player, Jax hopes to continue to make 
+    connections with his neighbors and spread the joy of breakfast food and fun games</p>
+    <h2> <u>Mission</u> </h2>
+  <p> Today, Flapjax Diner stays true to its origins as independent breakfast diner while adding a novelty trivia twist. 
+    Only at Flapjax will you have the opportunity to show off your intellect while enjoying your classic American diner favorites. 
+    At Flapjax, we believe in inclusivity, community, and healthy competition. We love watching our customers come back week after week,
+    improving their scores every time. We want to give back to our community and create a safe place that promises fun for families, friends, 
+    and groups of all kinds.</p>
+    <h2><u>Regular hours</u></h2>
+    Monday: 6:00AM - 8:00 PM <br/>
+    Tuesday:  6:00AM - 8:00 PM <br/>
+    Wednesday:  6:00AM - 8:00 PM <br/>
+    Thursday:  6:00AM - 8:00 PM <br/>
+    Friday:  6:00AM - 6:00 PM <br/>
+    Saturday: 6:00AM - 4:00 PM <br/>
+    Sunday: 6:00AM - 12:00 PM <br/>
+<h2><u>Our Reigning Champions</u></h2>
+<p>These trivia stars win every single week, come to FlapJax Diner to try your pass at beating them!
+<br/>
+  <img src="images/group.png" alt="Reigning champions" width="550" height="400"><br>
+  The LitHub Team!
+<br/>
+<br/>
+<br/>
+<br/>
+</div>
+
+<div class="footer">
+  <img src=images/pancake.png alt="FlapJax Diner Logo" width="100">
+  <h2>@FlapJax Diner | Powered by GitHub </br> Created by Melinda Fern, Josh Balbi, Hailey Roover, and Jack Flores</h2>
+</div>
+
+
+</body>

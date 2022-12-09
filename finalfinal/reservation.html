@@ -1,0 +1,224 @@
+<html>
+<head>
+  <title>Reservations</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href=css/stylesheet.css>
+  <script>
+      var dropdownShown = false;
+      function showDropdown() {
+            let dropButton = document.getElementsByClassName("dropdownElems")[0];
+            if (!dropdownShown) {
+                dropButton.style.display = "block";
+                dropdownShown = true;
+            } else {
+                dropButton.style.display = "none";
+                dropdownShown = false;
+            }
+      }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
+</head>
+<style>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=button] {
+  background-color: #b5dac9;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: #667b71;
+}
+
+.reserv {
+  border-radius: 20px;
+  background-color: #de5430;
+  padding: 20px;
+  margin: 10px;
+}
+
+.triviaInRes {
+    display: none;
+}
+
+@media screen and (min-width: 915px) {
+     .reserv {
+         margin-right: 400px;
+     }
+ }
+
+/* make navbar and footer more responsive */
+ @media screen and (max-width: 915px) {
+     .reserv {
+        margin-right: 20px;
+     }
+ }
+</style>
+
+<body>
+
+<div class="navbar">
+  <a class="logo" href="./index.html" ><img src="images/trivia.png" alt="Flapjax" height="66px"></a>
+  <a class="page" href=./order.html>Order</a>
+  <a class="page" href=./contact.html>Contact</a>
+  <a class="page" href=./menu.html>Menu</a>
+  <a class="page active" href=./reservation.html>Reservation</a>
+  <a class="page" href=./aboutus.html>About Us</a>
+  <div class="dropdown">
+      <button class="hamburger" onclick="showDropdown()">&#9776;</button>
+      <div class="dropdownElems">
+          <a href="./order.html">Order</a>
+          <a href=./contact.html>Contact</a>
+          <a href=./menu.html>Menu</a>
+          <a href=./reservation.html>Reservation</a>
+          <a href=./aboutus.html>About Us</a>
+      </div>
+  </div>
+</div>
+<br/>
+<br/>
+<h1>Reservations</h1>
+<h2>Please fill out the form in order to reserve a table at FlapJaxs</h2>
+
+<p>A game of Trivia will run every day at 1pm & 2pm! Please indicate below if you would like to participate.</p>
+
+<div class="reserv">
+<p class="userInfo"><label>First Name:</label> <input type="text"  name='fname' placeholder="First Name..."/></p>
+<p class="userInfo"><label>Last Name:</label>  <input type="text"  name='lname' placeholder="Last Name..."/></p>
+<p class="userInfo"><label>Party Size:</label> <input type="text"  name='psize' placeholder="Party Size..."/></p>
+
+<label>Time:</label>
+<script>
+function HOURSelect(name, minRangeAM, maxRangeAM, minRangePM, maxRangePM)
+{
+	var t= "";
+	t = "<select name='" + name + "' size='1' onchange='showTrivia()'>";
+	for (j=minRangeAM; j<=maxRangeAM; j++){
+        t += "<option>" + j + ":00 AM</option>";
+        t += "<option>" + j + ":30 AM</option>";
+    }
+        t += "<option>12:00 PM</option>";
+        t += "<option>12:30 PM</option>";
+    for (j=minRangePM; j<=maxRangePM; j++){
+        t += "<option>" + j + ":00 PM</option>";
+        t += "<option>" + j + ":30 PM</option>";
+    }
+
+    t+= "</select>";
+	return t;
+}
+document.writeln(HOURSelect('HOUR', 6, 11,1,7));
+error = ""
+function checkout(){
+    bool = validate();
+    if(!bool){
+        alert(error);
+    }
+    else{
+        out(error);
+    }
+}
+
+function validate(){
+    if (document.getElementsByName('fname')[0].value == ""){
+        error = "Input first name"
+        return false;
+    }
+    if (document.getElementsByName('lname')[0].value == ""){
+        error = "Input last name"
+        return false;
+    }
+    if (document.getElementsByName('psize')[0].value == ""){
+        error = "Input party size"
+        return false;
+    }
+    error = "Congratulations on your reservation!"
+    return true;
+}
+
+function out(error){
+    i = 1
+    if(document.getElementsByName('setting')[0].checked){
+        i = 0;
+    }
+    if(document.getElementsByName('trivia')[0].checked){
+        j = 0;
+    } else {
+        j = 1;
+    }
+    s = "Do you wish to proceed with the information below\n" +
+        "Name: " + document.getElementsByName('fname')[0].value + " " + document.getElementsByName('lname')[0].value + "\n" +
+        "Party Size: " + document.getElementsByName('psize')[0].value + "\n" +
+        "Time: " + document.getElementsByName('HOUR')[0].value + "\n" +
+        "Setting: " + document.getElementsByName('setting')[i].value + "\n" +
+        "Trivia Reservation: " + document.getElementsByName('trivia')[j].value
+    confirmation = window.confirm(s)
+    if(confirmation){
+        window.alert(error)
+    }
+    else{
+        window.alert("Your reservation has not been placed.")
+    }
+}
+
+// reveals question about trivia in reservation
+function showTrivia() {
+    let hour = document.getElementsByName("HOUR")[0];
+    let match = false; // boolean for if <select> matches trivia times 
+    
+    if (hour.value == "1:00 PM") match = true;
+    else if (hour.value == "2:00 PM") match = true;
+    
+    let triviaInRes = document.getElementsByClassName("triviaInRes")[0];
+    if (match) triviaInRes.style.display = "block";
+    else triviaInRes.style.display = "none";
+}
+
+</script>
+Time chosen is assumed to be the next time the hour occurs.
+<br/>
+<br/>
+<input type="radio"  name='setting' value = 'Inside' checked="checked"/>Inside seating
+<input type="radio"  name='setting' value = 'Outside'/>Outside seating
+<br/>
+<br/>
+<div class="triviaInRes">
+    Will your party be participating in our bi-hourly trivia?
+    <br/>
+    <input type="radio"  name='trivia' value = "Yes" checked="checked"/>Count us in!
+    <input type="radio"  name='trivia' value = "No"/>Not this time...
+    <br/>
+    <br/>
+</div>
+<input type = "button" value = "Submit" onclick = "checkout()"/>
+</div>
+
+
+<div class="footer">
+  <img src="images/pancake.png" alt="FlapJax Diner Logo" width="100">
+  <h2>@FlapJax Diner | Powered by GitHub </br> Created by Melinda Fern, Josh Balbi, Hailey Roover, and Jack Flores</h2>
+</div>
+
+
+
+
+</body>

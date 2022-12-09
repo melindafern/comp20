@@ -1,0 +1,99 @@
+<html>
+<head>
+  <title>hw8API</title>
+  <link rel="stylesheet" href=css/stylesheet.css>
+</head>
+<body>
+<style>
+
+.receipt {
+        border-radius: 5px;
+        background-color: #b5dac9;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+      }
+
+</style>
+
+<div class = "receipt">
+
+<h1>Your Order Receipt</h1>
+<p> First Name: FNAME</p>
+<p> Last Name: LNAME</p>
+<p> Table Num: NUM</p>
+
+<p class = "food">QUAN0 QUAL0: $COST0</p>
+<p class = "food">QUAN1 QUAL1: $COST1</p>
+<p class = "food">QUAN2 QUAL2: $COST2</p>
+<p class = "food">QUAN3  QUAL3: $COST3</p>
+<p class = "food">QUAN4  QUAL4: $COST4</p>
+<p class = "food">QUAN5  QUAL5: $COST5</p>
+
+<p> Subtotal: $SUBTOTAL</p>
+<p> tax: $TAX</p>
+<p class='tot'>Total: $TOTAL</p>
+<p class='tot'>Total: $DISTOTAL</p>
+<form target = _blank method = "get" action = "http://localhost:8080/confirm">
+<p class = applydis><input type = 'button' value = 'Check for discount' onclick = "update()"/><p>
+<p class = applydis><label>Discount was found </label><input type = 'button' value = 'Apply' onclick = "apply()"/><p>
+<p class = applydis><label>Discount applied </label><input type = 'button' value = 'Remove' onclick = "apply()"/><p>
+<p class = applydis>Discount not found</p>
+<p class='discount'><input type='text' name='discount' /></p>
+<p class = "hint">You qualified for 1 free pass on a trivia question of your choice!</p>
+<input type = 'submit' value = 'Order!'>
+</form>
+</div>
+
+
+<script>
+
+document.getElementsByClassName('tot')[1].style.display = 'none';
+document.getElementsByClassName('applydis')[1].style.display = 'none';
+document.getElementsByClassName('applydis')[2].style.display = 'none';
+document.getElementsByClassName('applydis')[3].style.display = 'none';
+document.getElementsByName("discount")[0].value = "none";
+document.getElementsByClassName("discount")[0].style.display = 'none';
+
+for (var i = 5; i > K - 1; i--) {
+    document.getElementsByClassName('food')[i].style.display = 'none';
+}
+
+function update(){
+        document.getElementsByClassName('applydis')[0].style.display = 'none';
+        if (DISCOUNTCHECK) {
+            document.getElementsByClassName('applydis')[1].style.display = '';
+        }
+        else{
+            document.getElementsByClassName('applydis')[3].style.display = '';
+        }
+}
+
+function apply(){
+    if(document.getElementsByClassName('tot')[0].style.display == ''){
+        document.getElementsByClassName('tot')[0].style.display = 'none';
+        document.getElementsByClassName('tot')[1].style.display = '';
+        document.getElementsByClassName('applydis')[1].style.display = 'none';
+        document.getElementsByClassName('applydis')[2].style.display = '';
+        document.getElementsByName("discount")[0].value = DISCOUNT;
+    }
+    else{
+        document.getElementsByClassName('tot')[1].style.display = 'none';
+        document.getElementsByClassName('tot')[0].style.display = '';
+        document.getElementsByClassName('applydis')[1].style.display = '';
+        document.getElementsByClassName('applydis')[2].style.display = 'none';
+        document.getElementsByName("discount")[0].value = "none";
+
+    }
+}
+
+if(TOTALL < 30){
+    document.getElementsByClassName('hint')[0].style.display = 'none';
+}
+
+
+
+
+</script>
+
+</body>
